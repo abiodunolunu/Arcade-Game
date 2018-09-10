@@ -1,15 +1,15 @@
 // let stringLevel = document.querySelector('.level');
 // let level = 0;
 var sound = new Howl({
-    src: [`/audio/tick.mp3`]
+    src: [`audio/tick.mp3`]
   });
 
 var laugh = new Howl({
-    src: [`/audio/laughter.mp3`]
+    src: [`audio/laughter.mp3`]
   });
 
 var clap = new Howl({
-    src: [`/audio/clap.mp3`]
+    src: [`audio/clap.mp3`]
   });
 
 let time = 5;
