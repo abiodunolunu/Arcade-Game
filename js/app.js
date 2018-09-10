@@ -66,7 +66,6 @@ class Player {
     constructor(x, y) {
         setInterval(() => {
             time--
-            console.log('scoop added!');
           }, 1000);
 
         this.sprite = 'images/char-boy.png';
