@@ -1,14 +1,14 @@
 // let stringLevel = document.querySelector('.level');
 // let level = 0;
-var sound = new Howl({
+let sound = new Howl({
     src: [`audio/tick.mp3`]
   });
 
-var laugh = new Howl({
+let laugh = new Howl({
     src: [`audio/laughter.mp3`]
   });
 
-var clap = new Howl({
+let clap = new Howl({
     src: [`audio/clap.mp3`]
   });
 
@@ -43,9 +43,8 @@ class Enemy {
         player.x + 80 > this.x && 
         player.y < this.y + 60 &&
         60 + player.y > this.y){
-                laugh.play();
-                player.x = 202;
-                player.y = 405;
+            laugh.play();
+            reset();
         }
     }
 
@@ -59,8 +58,10 @@ class Enemy {
 // This class requires an update(), render() and
 // a handleInput() method.
 
-
-
+function reset(){
+    player.x = 202;
+    player.y = 405;
+}
 
 class Player {
     constructor(x, y) {
@@ -76,8 +77,7 @@ class Player {
                 // level++;
                 // stringLevel.textContent = level;
                 clap.play();
-                player.x = 202;
-                player.y = 405;
+                reset();
             }
             console.log('scoop added!');
           }, 1000);
@@ -88,7 +88,7 @@ class Player {
     }
  
     render() {
-        ctx.font = "90px Arial";
+        ctx.font = '90px Arial';
         
         if(time < 1){
             time = ``
@@ -133,20 +133,18 @@ class Player {
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
-const allEnemies = [];
-const enemy1 = new Enemy(-98, 60, 50 + Math.random()* 100);
-const enemy2 = new Enemy(0, 145, 50 + Math.random()* 100);
-const enemy3 = new Enemy(0, 225, 50 + Math.random()* 100);
-const enemy4 = new Enemy(0, 160, 50 + Math.random()* 100);
-const enemy5 = new Enemy(0, 80, 50 + Math.random()* 100);
-const enemy6 = new Enemy(0, 125, 50 + Math.random()* 100);
-
-allEnemies.push(enemy1,enemy2,enemy3,enemy4,enemy5,enemy6);
-
+const allEnemies = [
+    new Enemy(0, 60, 60 + Math.random()* 100),
+    new Enemy(0, 145, 50 + Math.random()* 100),
+    new Enemy(0, 225, 80 + Math.random()* 100),
+    new Enemy(-98, 160, 45 + Math.random()* 100),
+    new Enemy(-98, 80, 70 + Math.random()* 100),
+    new Enemy(-98, 225, 50 + Math.random()* 100)
+];
 
 
 // Place the player object in a variable called player
-const player = new Player(202, 405)
+const player = new Player(202, 405);
 
 
 // This listens for key presses and sends the keys to your
